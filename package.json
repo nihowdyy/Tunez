@@ -1,0 +1,25 @@
+{
+  "name": "tunez",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000T\u0000u\u0000n\u0000e\u0000z\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^13.1.0",
+    "yt-search": "^2.10.1",
+    "ytdl-core": "^4.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nihowdyy/Tunez.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nihowdyy/Tunez/issues"
+  },
+  "homepage": "https://github.com/nihowdyy/Tunez#readme"
+}
