@@ -4,7 +4,11 @@
   "description": "��#\u0000 \u0000T\u0000u\u0000n\u0000e\u0000z\u0000\r\u0000 \u0000",
   "main": "index.js",
   "dependencies": {
+    "@discordjs/opus": "^0.6.0",
+    "@discordjs/voice": "^0.6.0",
     "discord.js": "^13.1.0",
+    "ffmpeg-static": "^4.4.0",
+    "libsodium-wrappers": "^0.7.9",
     "yt-search": "^2.10.1",
     "ytdl-core": "^4.9.1"
   },
