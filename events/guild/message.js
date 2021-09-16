@@ -1,5 +1,5 @@
 module.exports = (Discord, client, message) => {
-    const prefix = '-';
+    const { prefix } = require('../../config.json');
 
     if (!message.content.startsWith(prefix) || message.author.bot) return
 
