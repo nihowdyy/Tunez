@@ -1,7 +1,7 @@
 module.exports = {
     name: 'me',
     description: 'this is an embed made during testing to tell author information',
-    execute(message, args, Discord) {
+    execute(client, message, args, Discord) {
         const myEmbed = new Discord.MessageEmbed()
         .setColor('#008080')
         .setTitle('Me :)')

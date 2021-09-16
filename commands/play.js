@@ -7,7 +7,7 @@ module.exports = {
     name: 'play',
     aliases: ['p'],
     description: 'Joins and plays a video from youtube',
-    async execute(message, args, Discord) {
+    async execute(client, message, args, Discord) {
         const voiceChannel = message.member.voice.channel;
 
         if (!voiceChannel) return message.channel.send('You gotta be in a channel to execute this command homie :(');
