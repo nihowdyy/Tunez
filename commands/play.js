@@ -5,25 +5,15 @@ const { Formatters } = require('discord.js');
 
 module.exports = {
     name: 'play',
+    aliases: ['p'],
     description: 'Joins and plays a video from youtube',
     async execute(message, args, Discord) {
         const voiceChannel = message.member.voice.channel;
 
         if (!voiceChannel) return message.channel.send('You gotta be in a channel to execute this command homie :(');
-        if (!args.length) return message.channel.send('You need to add a little more to that command dude :/')
+        if (!args.length) return message.channel.send('You need to add a little more to that command dude :/');
 
-        const videoFinder = async (query) => {
-            const videoResult = await ytSearch(query);
-
-            return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
-        }
-
-        const video = await videoFinder(args.join(' '));
-        const player = createAudioPlayer();
-        
-        function playSong() {
-            const stream = ytdl(video.url, {filter: 'audioonly'});
-
+        function playSong(stream) {
             const resource = createAudioResource(stream, {
                 inputType: StreamType.Arbitrary,
             });
@@ -48,12 +38,40 @@ module.exports = {
                 throw error;
             }
         }
+
+        const player = createAudioPlayer();
         
-        connectToChannel(voiceChannel);
+        const validURL = (str) =>{
+            var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+            if(!regex.test(str)){
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+        if (validURL(args[0])) {
+            connectToChannel(voiceChannel);
+
+            const stream = ytdl(args[0], {filter: 'audioonly'});
+            await playSong(stream)
+            await message.reply(`Now Playing: ***Your Link!***`)
+            return
+        }
+
+        const videoFinder = async (query) => {
+            const videoResult = await ytSearch(query);
+
+            return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
+        }
+
+        const video = await videoFinder(args.join(' '));
 
         if (video) {
-            await playSong();
-            
+            connectToChannel(voiceChannel);
+
+            playSong(video.url);
+
             await message.reply(`Now Playing: ***${video.title}***`)
         } else {
             message.channel.send('No video results found');

@@ -8,7 +8,7 @@ module.exports = {
         .setDescription('My stuffs')
         .addField('Twitch', 'nihowdy', true)
         .addField('Github', 'nihowdyy', true)
-        .setImage('https://media2.giphy.com/media/X9qk3eM85bCwLHYS4p/giphy.gif?cid=790b76117655f68457ae6fd8f4e326ab467d491ef5f9acaf&rid=giphy.gif&ct=s')
+        .setImage('https://media.giphy.com/media/RomhUvLz67UTd9Fd38/giphy.gif?cid=790b761190f5aa2429281890c65faa1c28778151cb232b49&rid=giphy.gif&ct=s')
         .setFooter('ayo?');
 
         message.channel.send({ embeds: [myEmbed] });
